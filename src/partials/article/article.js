@@ -4,6 +4,8 @@ import Header from '../../components/header/header'
 import Desc from '../../components/desc/desc'
 import Layout from '../../layout/layout'
 import Wrap from '../../layout/wrap'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import theme from '../../layout/theme'
 
 const Whiter = styled.div`
   background: linear-gradient(
@@ -22,14 +24,18 @@ const Article = props => {
   return (
     <Layout>
       <Wrap as="article">
+        {/* <SkeletonTheme color={theme.colorBlue}> */}
         <Header bold margin>
-          Bactria–Margiana Archaeological Complex
+          {/* Bactria–Margiana Archaeological Complex */}
+          <Skeleton />
         </Header>
+        {/* </SkeletonTheme> */}
         <Desc>
-          The Bactria–Margiana Archaeological Complex (short BMAC), also known
+          {/* The Bactria–Margiana Archaeological Complex (short BMAC), also known
           as the Oxus civilization, is the modern archaeological designation for
           a Bronze Age civilization of Central Asia, dated to c. 2400–1900 BC in
-          its urban phase or Integration Era, located in {'...'}
+          its urban phase or Integration Era, located in {'...'} */}
+          <Skeleton count={7} />
         </Desc>
         <Whiter />
       </Wrap>
