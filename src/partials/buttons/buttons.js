@@ -16,7 +16,13 @@ const Buttons = () => {
   return (
     <Layout>
       <StyledWrap>
-        <Button full first>
+        <Button
+          full
+          first
+          as="a"
+          target="_blank"
+          href={`http://en.wikipedia.org/?curid=${state.id}`}
+        >
           Read full on Wikipedia
         </Button>
         <Button onClick={actions.fetchArticle}>Find another article</Button>

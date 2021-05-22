@@ -1,3 +1,5 @@
+/*global chrome*/
+
 import React, { useEffect } from 'react'
 import { useCounter } from '../../store/reducer'
 import styled from 'styled-components'
@@ -54,6 +56,7 @@ const Article = props => {
   useEffect(() => {
     // fetchArticleHandler()
     actions.fetchArticle()
+    // chrome.storage.local.get(['test'], res => console.log(res))
   }, [])
 
   return (
@@ -77,7 +80,7 @@ const Article = props => {
               state.desc
             )
           ) : (
-            <Skeleton count={7} />
+            <Skeleton count={5} />
           )}
         </StyledDesc>
         {state.isTooLong && <Whiter />}

@@ -15,3 +15,8 @@ body {
 *::-webkit-scrollbar,::-webkit-scrollbar {
   display: none;
 }
+a{
+  display:block;
+  text-decoration: none;
+  text-align:center;
+}

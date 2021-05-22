@@ -1,37 +1,49 @@
+/*global chrome*/
 import { createStore, createHook } from 'react-sweet-state'
-
+const initialState = {
+  title: '',
+  desc: '',
+  id: '',
+  isTooLong: false,
+}
 const Store = createStore({
-  initialState: {
-    title: '',
-    desc: '',
-    id: '',
-    isTooLong: false,
-  },
+  initialState,
   actions: {
-    setArticle:
-      obj =>
-      ({ setState, getState }) => {
-        setState(obj)
-      },
     fetchArticle:
       () =>
       async ({ setState, getState }) => {
-        const url =
-          'https://pl.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=extracts|description&grnlimit=1&explaintext=&exintro'
-        let resp = await fetch(url)
-        resp = await resp.json()
+        setState(initialState)
 
-        const response = { ...resp }
-        const id = Object.keys(response.query.pages)[0]
-        const title = response.query.pages[id].title
-        let desc = response.query.pages[id].extract
-        let isTooLong = false
-        if (desc.length >= 252) {
-          desc = desc.substring(0, 250)
-          isTooLong = true
-        }
-        console.log(response, id, title, desc)
-        setState({ id, title, desc, isTooLong })
+        const key = 'allTime'
+        let allTime = 1
+
+        chrome.storage.sync.get([key], async res => {
+          if (key in res) allTime = res[key]
+
+          if (allTime === 1) {
+            chrome.storage.sync.set({ allTime: 1 })
+          } else {
+            allTime += 1
+            chrome.storage.sync.set({ allTime: allTime })
+          }
+
+          const url =
+            'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=extracts|description&grnlimit=1&explaintext=&exintro'
+          let resp = await fetch(url)
+          resp = await resp.json()
+
+          const response = { ...resp }
+          const id = Object.keys(response.query.pages)[0]
+          const title = response.query.pages[id].title
+          let desc = response.query.pages[id].extract
+          let isTooLong = false
+
+          if (desc.length >= 252) {
+            desc = desc.substring(0, 250)
+            isTooLong = true
+          }
+          setState({ id, title, desc, isTooLong, allTime })
+        })
       },
   },
 })

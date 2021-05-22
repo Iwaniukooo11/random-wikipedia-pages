@@ -1,4 +1,5 @@
 import React from 'react'
+import { useCounter } from '../../store/reducer'
 import styled from 'styled-components'
 import Layout from '../../layout/layout'
 import Wrap from '../../layout/wrap'
@@ -46,6 +47,15 @@ const StyledWrap = styled(Wrap)`
 `
 
 const Stats = props => {
+  const [state, actions] = useCounter()
+  console.log(
+    'stats get',
+    state
+    //   state.res,
+    //   state.res,
+    //   Object.keys(state.res),
+    //   state.res[Object.keys(state.res)]
+  )
   return (
     <Layout>
       <Wrap>
@@ -62,7 +72,7 @@ const Stats = props => {
           <NumberWrap>
             <Desc center>all time</Desc>
             <Desc bold center>
-              272
+              {state.allTime}
             </Desc>
           </NumberWrap>
         </StyledWrap>
