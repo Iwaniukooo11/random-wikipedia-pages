@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useCounter } from '../../store/reducer'
 
 import Layout from '../../layout/layout'
 import Wrap from '../../layout/wrap'
@@ -10,13 +11,15 @@ const StyledWrap = styled(Wrap)`
 `
 
 const Buttons = () => {
+  const [state, actions] = useCounter()
+
   return (
     <Layout>
       <StyledWrap>
         <Button full first>
           Read full on Wikipedia
         </Button>
-        <Button>Find another article</Button>
+        <Button onClick={actions.fetchArticle}>Find another article</Button>
       </StyledWrap>
     </Layout>
   )

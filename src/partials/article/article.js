@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useCounter } from '../../store/reducer'
-import styled, { StyleSheetManager } from 'styled-components'
+import styled from 'styled-components'
 import Header from '../../components/header/header'
 import Desc from '../../components/desc/desc'
 import Layout from '../../layout/layout'
@@ -20,36 +20,40 @@ const Whiter = styled.div`
   bottom: 0;
   left: 0;
 `
+const StyledDesc = styled(Desc)`
+  height: 154px;
+`
 
 const Article = props => {
   const [state, actions] = useCounter()
 
-  const fetchArticleHandler = () => {
-    const fc = async () => {
-      const url =
-        'https://pl.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=extracts|description&grnlimit=1&explaintext=&exintro'
-      let resp = await fetch(url)
-      // console.log(resp)
-      resp = await resp.json()
-      // console.log(resp)
+  // const fetchArticleHandler = () => {
+  //   const fc = async () => {
+  //     const url =
+  //       'https://pl.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=extracts|description&grnlimit=1&explaintext=&exintro'
+  //     let resp = await fetch(url)
+  //     // console.log(resp)
+  //     resp = await resp.json()
+  //     // console.log(resp)
 
-      const response = { ...resp }
-      // console.log(response)
-      const id = Object.keys(response.query.pages)[0]
-      const title = response.query.pages[id].title
-      let desc = response.query.pages[id].extract
-      let isTooLong = false
-      if (desc.length >= 252) {
-        desc = desc.substring(0, 250)
-        isTooLong = true
-      }
-      console.log(response, id, title, desc)
-      actions.setArticle({ title, desc, id, isTooLong })
-    }
-    fc()
-  }
+  //     const response = { ...resp }
+  //     // console.log(response)
+  //     const id = Object.keys(response.query.pages)[0]
+  //     const title = response.query.pages[id].title
+  //     let desc = response.query.pages[id].extract
+  //     let isTooLong = false
+  //     if (desc.length >= 252) {
+  //       desc = desc.substring(0, 250)
+  //       isTooLong = true
+  //     }
+  //     console.log(response, id, title, desc)
+  //     actions.setArticle({ title, desc, id, isTooLong })
+  //   }
+  //   fc()
+  // }
   useEffect(() => {
-    fetchArticleHandler()
+    // fetchArticleHandler()
+    actions.fetchArticle()
   }, [])
 
   return (
@@ -61,7 +65,7 @@ const Article = props => {
           {state.title || <Skeleton />}
         </Header>
         {/* </SkeletonTheme> */}
-        <Desc>
+        <StyledDesc>
           {/* The Bactria–Margiana Archaeological Complex (short BMAC), also known
           as the Oxus civilization, is the modern archaeological designation for
           a Bronze Age civilization of Central Asia, dated to c. 2400–1900 BC in
@@ -75,7 +79,7 @@ const Article = props => {
           ) : (
             <Skeleton count={7} />
           )}
-        </Desc>
+        </StyledDesc>
         {state.isTooLong && <Whiter />}
       </Wrap>
     </Layout>

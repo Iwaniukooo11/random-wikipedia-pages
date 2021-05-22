@@ -1,10 +1,17 @@
 .App{
   font-family: 'Titillium Web', sans-serif;
-  min-width:350px;
+  width:350px;
   padding-bottom:10px; 
 }
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+
 *,*::after,*::before{
   margin:0;
   padding:0;
   box-sizing: border-box;
+}
+*::-webkit-scrollbar,::-webkit-scrollbar {
+  display: none;
 }
