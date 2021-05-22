@@ -22,7 +22,9 @@ const Article = props => {
   return (
     <Layout>
       <Wrap as="article">
-        <Header bold>Bactria–Margiana Archaeological Complex</Header>
+        <Header bold margin>
+          Bactria–Margiana Archaeological Complex
+        </Header>
         <Desc>
           The Bactria–Margiana Archaeological Complex (short BMAC), also known
           as the Oxus civilization, is the modern archaeological designation for

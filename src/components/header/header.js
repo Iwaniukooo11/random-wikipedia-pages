@@ -6,10 +6,12 @@ const Header = styled.h1`
   font-weight: ${props => (props.bold ? '600' : '300')};
   color: ${props =>
     props.black ? props.theme.colorGrey : props.theme.colorBlue};
+  margin-bottom: ${props => (props.margin ? '15px' : null)};
 `
 Header.propTypes = {
   small: PropTypes.bool,
   bold: PropTypes.bool,
   black: PropTypes.bool,
+  margin: PropTypes.bool,
 }
 export default Header

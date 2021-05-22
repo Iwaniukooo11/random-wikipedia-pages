@@ -8,6 +8,7 @@ import Desc from '../../components/desc/desc'
 import icon from '../../images/w-logo.svg'
 
 const StyledWrap = styled(Wrap)`
+  margin-top: 20px;
   display: flex;
   align-items: center;
 `

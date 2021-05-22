@@ -16,6 +16,11 @@ const Button = styled.button`
   margin: auto;
   display: block;
   margin-bottom: ${props => (props.first ? '15px' : 0)};
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 `
 Button.PropTypes = {
   full: PropTypes.bool,
