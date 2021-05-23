@@ -18,9 +18,10 @@ const Button = styled.button`
   margin-bottom: ${props => (props.first ? '15px' : 0)};
   transition: 0.3s;
   &:hover {
-    opacity: 0.8;
+    opacity: ${props => (props.active ? 0.8 : 0.2)};
     cursor: pointer;
   }
+  opacity: ${props => (props.active ? 1 : 0.2)};
 `
 Button.PropTypes = {
   full: PropTypes.bool,
