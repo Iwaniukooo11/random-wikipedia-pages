@@ -23,8 +23,9 @@ const Button = styled.button`
   }
   opacity: ${props => (props.active ? 1 : 0.2)};
 `
-Button.PropTypes = {
+Button.propTypes = {
   full: PropTypes.bool,
   first: PropTypes.bool,
+  active: PropTypes.bool,
 }
 export default Button

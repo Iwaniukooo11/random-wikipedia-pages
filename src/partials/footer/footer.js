@@ -6,8 +6,8 @@ import logoDev from '../../images/logo-dev.svg'
 import logoGithub from '../../images/logo-github.svg'
 
 const arr = [
-  { link: '#', img: logoDev },
-  { link: '#', img: logoGithub },
+  { link: 'https://dev.to/iwaniukooo11', img: logoDev },
+  { link: 'https://github.com/Iwaniukooo11', img: logoGithub },
 ]
 
 const Img = styled.img`
@@ -33,7 +33,7 @@ const Footer = () => {
     <Layout>
       <StyledWrap>
         {arr.map(el => (
-          <A href={el.link} target="_blank">
+          <A key={el.link} href={el.link} target="_blank">
             <Img src={el.img} />
           </A>
         ))}

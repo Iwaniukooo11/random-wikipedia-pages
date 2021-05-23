@@ -16,7 +16,6 @@ const Img = styled.img`
   margin-right: 10px;
 `
 const Version = styled(Desc)`
-  /* margin-left: 10px; */
   margin-left: auto;
   display: block;
 `

@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
-  "version": "0.0.1",
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "description": "Sample application showing how to create an extension with Create React App",
+  "version": "1.0.0",
+  "short_name": "Random Wikipedia Pages",
+  "name": "Random Wikipedia Pages",
+  "description": "Application showing random wikipedia articles",
   "browser_action": {
-    "default_title": "CRE",
+    "default_title": "Random Wikipedia Pages",
     "default_popup": "popup.html"
   },
   "background": {
