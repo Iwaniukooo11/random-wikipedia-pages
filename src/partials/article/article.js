@@ -29,34 +29,8 @@ const StyledDesc = styled(Desc)`
 const Article = props => {
   const [state, actions] = useCounter()
 
-  // const fetchArticleHandler = () => {
-  //   const fc = async () => {
-  //     const url =
-  //       'https://pl.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=extracts|description&grnlimit=1&explaintext=&exintro'
-  //     let resp = await fetch(url)
-  //     // console.log(resp)
-  //     resp = await resp.json()
-  //     // console.log(resp)
-
-  //     const response = { ...resp }
-  //     // console.log(response)
-  //     const id = Object.keys(response.query.pages)[0]
-  //     const title = response.query.pages[id].title
-  //     let desc = response.query.pages[id].extract
-  //     let isTooLong = false
-  //     if (desc.length >= 252) {
-  //       desc = desc.substring(0, 250)
-  //       isTooLong = true
-  //     }
-  //     console.log(response, id, title, desc)
-  //     actions.setArticle({ title, desc, id, isTooLong })
-  //   }
-  //   fc()
-  // }
   useEffect(() => {
-    // fetchArticleHandler()
     actions.fetchArticle()
-    // chrome.storage.local.get(['test'], res => console.log(res))
   }, [])
 
   return (
@@ -69,10 +43,6 @@ const Article = props => {
         </Header>
         {/* </SkeletonTheme> */}
         <StyledDesc>
-          {/* The Bactria–Margiana Archaeological Complex (short BMAC), also known
-          as the Oxus civilization, is the modern archaeological designation for
-          a Bronze Age civilization of Central Asia, dated to c. 2400–1900 BC in
-          its urban phase or Integration Era, located in {'...'} */}
           {state.desc ? (
             state.isTooLong ? (
               `${state.desc}...`

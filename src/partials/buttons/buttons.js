@@ -13,19 +13,32 @@ const StyledWrap = styled(Wrap)`
 const Buttons = () => {
   const [state, actions] = useCounter()
 
+  const linkClickHandler = () => {
+    actions.incrementOpen()
+    window.open(`http://en.wikipedia.org/?curid=${state.id}`, '_blank').focus()
+  }
+
   return (
     <Layout>
       <StyledWrap>
         <Button
           full
           first
-          as="a"
-          target="_blank"
-          href={`http://en.wikipedia.org/?curid=${state.id}`}
+          // as="a"
+          // target="_blank"
+          // href={`http://en.wikipedia.org/?curid=${state.id}`}
+          active={!!state.title}
+          onClick={linkClickHandler}
         >
           Read full on Wikipedia
         </Button>
-        <Button onClick={actions.fetchArticle}>Find another article</Button>
+        <Button
+          active={!!state.title}
+          disabled={!state.title}
+          onClick={actions.fetchArticle}
+        >
+          Find another article
+        </Button>
       </StyledWrap>
     </Layout>
   )

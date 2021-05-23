@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCounter } from '../../store/reducer'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import styled from 'styled-components'
 import Layout from '../../layout/layout'
 import Wrap from '../../layout/wrap'
@@ -66,13 +67,13 @@ const Stats = props => {
           <NumberWrap className="first">
             <Desc center>this day</Desc>
             <Desc bold center>
-              3
+              {state.allTimeOpened ?? <Skeleton />}
             </Desc>
           </NumberWrap>
           <NumberWrap>
             <Desc center>all time</Desc>
             <Desc bold center>
-              {state.allTime}
+              {state.allTimeShown ?? <Skeleton />}
             </Desc>
           </NumberWrap>
         </StyledWrap>

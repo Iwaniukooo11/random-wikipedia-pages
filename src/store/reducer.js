@@ -12,21 +12,31 @@ const Store = createStore({
     fetchArticle:
       () =>
       async ({ setState, getState }) => {
+        //loading
         setState(initialState)
 
-        const key = 'allTime'
-        let allTime = 1
+        //local storage section
+        const keyShown = 'allTimeShown'
+        const keyOpen = 'allTimeOpened'
+        let counterAllTimeOpen = 0
+        let counterAllTimeShown = 0
+        let isFound = false
 
-        chrome.storage.sync.get([key], async res => {
-          if (key in res) allTime = res[key]
+        chrome.storage.sync.get([keyShown, keyOpen], async res => {
+          counterAllTimeOpen = res[keyOpen] || 0
+          if (keyShown in res) {
+            counterAllTimeShown = res[keyShown]
+            isFound = true
+          }
+          console.log('res', res)
 
-          if (allTime === 1) {
-            chrome.storage.sync.set({ allTime: 1 })
-          } else {
-            allTime += 1
-            chrome.storage.sync.set({ allTime: allTime })
+          if (isFound)
+            chrome.storage.sync.set({ [keyShown]: counterAllTimeShown + 1 })
+          else {
+            chrome.storage.sync.set({ [keyShown]: 0 })
           }
 
+          //fetch data section
           const url =
             'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=extracts|description&grnlimit=1&explaintext=&exintro'
           let resp = await fetch(url)
@@ -37,13 +47,29 @@ const Store = createStore({
           const title = response.query.pages[id].title
           let desc = response.query.pages[id].extract
           let isTooLong = false
+          console.log('allTime', counterAllTimeShown)
 
           if (desc.length >= 252) {
             desc = desc.substring(0, 250)
             isTooLong = true
           }
-          setState({ id, title, desc, isTooLong, allTime })
+          setState({
+            id,
+            title,
+            desc,
+            isTooLong,
+            [keyShown]: counterAllTimeShown,
+            [keyOpen]: counterAllTimeOpen,
+          })
         })
+      },
+    incrementOpen:
+      () =>
+      ({ setState, getState }) => {
+        const key = 'allTimeOpened'
+        let counter = getState()[key] + 1 || 0
+        setState({ ...getState(), [key]: counter })
+        chrome.storage.sync.set({ [key]: counter })
       },
   },
 })
