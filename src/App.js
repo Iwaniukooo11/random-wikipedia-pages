@@ -16,7 +16,6 @@ const Wrap = styled.div`
 `
 
 function App() {
-  console.log(chrome)
   return (
     <div className="App">
       <Wrap>

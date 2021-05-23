@@ -1,6 +1,6 @@
 import React from 'react'
 import { useCounter } from '../../store/reducer'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton'
 import styled from 'styled-components'
 import Layout from '../../layout/layout'
 import Wrap from '../../layout/wrap'
@@ -49,29 +49,22 @@ const StyledWrap = styled(Wrap)`
 
 const Stats = props => {
   const [state, actions] = useCounter()
-  console.log(
-    'stats get',
-    state
-    //   state.res,
-    //   state.res,
-    //   Object.keys(state.res),
-    //   state.res[Object.keys(state.res)]
-  )
+
   return (
     <Layout>
       <Wrap>
         <Header bold margin>
-          Number of shown Pages
+          Statistics
         </Header>
         <StyledWrap>
           <NumberWrap className="first">
-            <Desc center>this day</Desc>
+            <Desc center>total clicked</Desc>
             <Desc bold center>
               {state.allTimeOpened ?? <Skeleton />}
             </Desc>
           </NumberWrap>
           <NumberWrap>
-            <Desc center>all time</Desc>
+            <Desc center>total shown</Desc>
             <Desc bold center>
               {state.allTimeShown ?? <Skeleton />}
             </Desc>

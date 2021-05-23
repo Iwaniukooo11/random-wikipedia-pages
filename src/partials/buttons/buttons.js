@@ -21,15 +21,7 @@ const Buttons = () => {
   return (
     <Layout>
       <StyledWrap>
-        <Button
-          full
-          first
-          // as="a"
-          // target="_blank"
-          // href={`http://en.wikipedia.org/?curid=${state.id}`}
-          active={!!state.title}
-          onClick={linkClickHandler}
-        >
+        <Button full first active={!!state.title} onClick={linkClickHandler}>
           Read full on Wikipedia
         </Button>
         <Button

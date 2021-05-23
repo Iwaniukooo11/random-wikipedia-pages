@@ -1,5 +1,3 @@
-/*global chrome*/
-
 import React, { useEffect } from 'react'
 import { useCounter } from '../../store/reducer'
 import styled from 'styled-components'
@@ -7,8 +5,7 @@ import Header from '../../components/header/header'
 import Desc from '../../components/desc/desc'
 import Layout from '../../layout/layout'
 import Wrap from '../../layout/wrap'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import theme from '../../layout/theme'
+import Skeleton from 'react-loading-skeleton'
 
 const Whiter = styled.div`
   background: linear-gradient(
@@ -36,12 +33,9 @@ const Article = props => {
   return (
     <Layout>
       <Wrap as="article">
-        {/* <SkeletonTheme color={theme.colorBlue}> */}
         <Header bold margin>
-          {/* Bactria–Margiana Archaeological Complex */}
           {state.title || <Skeleton />}
         </Header>
-        {/* </SkeletonTheme> */}
         <StyledDesc>
           {state.desc ? (
             state.isTooLong ? (

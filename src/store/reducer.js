@@ -28,7 +28,6 @@ const Store = createStore({
             counterAllTimeShown = res[keyShown]
             isFound = true
           }
-          console.log('res', res)
 
           if (isFound)
             chrome.storage.sync.set({ [keyShown]: counterAllTimeShown + 1 })
@@ -47,7 +46,6 @@ const Store = createStore({
           const title = response.query.pages[id].title
           let desc = response.query.pages[id].extract
           let isTooLong = false
-          console.log('allTime', counterAllTimeShown)
 
           if (desc.length >= 252) {
             desc = desc.substring(0, 250)
