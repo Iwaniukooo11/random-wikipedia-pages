@@ -19,7 +19,7 @@ const Store = createStore({
         const keyShown = 'allTimeShown'
         const keyOpen = 'allTimeOpened'
         let counterAllTimeOpen = 0
-        let counterAllTimeShown = 0
+        let counterAllTimeShown = 1
         let isFound = false
 
         chrome.storage.sync.get([keyShown, keyOpen], async res => {
@@ -32,12 +32,12 @@ const Store = createStore({
           if (isFound)
             chrome.storage.sync.set({ [keyShown]: counterAllTimeShown + 1 })
           else {
-            chrome.storage.sync.set({ [keyShown]: 0 })
+            chrome.storage.sync.set({ [keyShown]: 2 })
           }
 
           //fetch data section
           const url =
-            'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=extracts|description&grnlimit=1&explaintext=&exintro'
+            'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=random&grnnamespace=0&prop=extracts&grnlimit=1&explaintext=&exintro'
           let resp = await fetch(url)
           resp = await resp.json()
 
