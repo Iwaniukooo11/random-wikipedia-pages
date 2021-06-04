@@ -1,6 +1,7 @@
 {
-  "name": "wikipedia-random-page",
-  "version": "0.1.0",
+  "name": "Random Wikipedia Pages",
+  "description":"Chrome extension, which fetches random wikipedia article and displays it.",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "short_name": "Random Wikipedia Pages",
   "name": "Random Wikipedia Pages",
-  "description": "Application showing random wikipedia articles",
+  "description": "Chrome extension, which fetches random wikipedia article and displays it.",
   "browser_action": {
     "default_title": "Random Wikipedia Pages",
     "default_popup": "popup.html"
