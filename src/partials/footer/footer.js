@@ -7,7 +7,10 @@ import logoGithub from '../../images/logo-github.svg'
 
 const arr = [
   { link: 'https://dev.to/iwaniukooo11', img: logoDev },
-  { link: 'https://github.com/Iwaniukooo11', img: logoGithub },
+  {
+    link: 'https://github.com/Iwaniukooo11/random-wikipedia-pages',
+    img: logoGithub,
+  },
 ]
 
 const Img = styled.img`

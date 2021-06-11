@@ -1,5 +1,5 @@
 {
-  "name": "Random Wikipedia Pages",
+  "name": "random-wikipedia-pages",
   "description":"Chrome extension, which fetches random wikipedia article and displays it.",
   "version": "1.0.0",
   "private": true,
