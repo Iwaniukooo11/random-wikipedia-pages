@@ -12,4 +12,5 @@ Technologies:
 - Sweet State
 
 [Live extension](https://chrome.google.com/webstore/detail/random-wikipedia-pages/eijldnpcidmpgllbfoncmbclpoialpjo?hl=pl&authuser=0)
+<br/>
 [Dev to article](https://dev.to/iwaniukooo11/i-built-a-wikipedia-chrome-extension-3m6a)
